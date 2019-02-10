@@ -5,6 +5,10 @@ export const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   birthday: {
     type: String,
     required: false,
