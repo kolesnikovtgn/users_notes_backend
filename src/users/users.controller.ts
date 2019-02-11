@@ -23,11 +23,6 @@ export class UsersController {
     this.usersService.update(id, newValue);
   }
 
-  @Patch()
-  async addNote(@Body() id, @Body() newNote: Note) {
-    this.usersService.addNote(id, newNote);
-  }
-
   @Get()
   async findAll(): Promise<User[]> {
     return this.usersService.findAll();

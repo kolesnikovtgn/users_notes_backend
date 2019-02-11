@@ -28,19 +28,7 @@ export class UsersService {
     if (!updateUser._id) {
       debug('user not find');
     }
-    await this.userModel.findByIdAndUpdate(ID, newValue);
-    return await this.userModel.findById(ID).exec();
-  }
-
-  async addNote(ID, newNote: Note): Promise<User> {
-
-    const updateUser = await this.userModel.findById(ID).exec();
-
-    if (!updateUser._id) {
-      debug('user not find');
-    }
-    // await  updateUser.notes.push('textinADDNOTE');
-    await this.userModel.findByIdAndUpdate(ID, newNote);
+    await this.userModel.findByIdAndUpdate(ID, { $push: { notes: newValue.notes } });
     return await this.userModel.findById(ID).exec();
   }
 
