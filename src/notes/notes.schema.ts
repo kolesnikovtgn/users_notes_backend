@@ -14,15 +14,15 @@ export const NoteSchema = new mongoose.Schema({
     required: true,
   },
   likeCount: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
   },
   tags: {
     type: String, // mongoose.Schema.Types.Mixed
     required: false,
   },
   dateCreate: {
-    type: Date,
+    type: String,
     required: true,
   },
 });

@@ -1,19 +1,19 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UsersService } from './notes.service';
-import { User } from './interfaces/user.interface';
+import { CreateNoteDto } from './dto/create-note.dto';
+import { NotesService } from './notes.service';
+import { Note } from './interfaces/note.interface';
 
-@Controller('users')
-export class UsersController {
-  constructor(private readonly usersService: UsersService) { }
+@Controller('notes')
+export class NotesController {
+  constructor(private readonly notesService: NotesService) { }
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto) {
-    this.usersService.create(createUserDto);
+  async create(@Body() createNoteDto: CreateNoteDto) {
+    this.notesService.create(createNoteDto);
   }
 
   @Get()
-  async findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+  async findAll(): Promise<Note[]> {
+    return this.notesService.findAll();
   }
 }

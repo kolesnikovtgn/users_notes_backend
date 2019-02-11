@@ -12,4 +12,4 @@ import { DatabaseModule } from '../database/database.module';
     ...notesProviders,
   ],
 })
-export class UsersModule { }
+export class NotesModule { }
