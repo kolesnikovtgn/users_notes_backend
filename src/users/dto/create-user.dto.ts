@@ -4,5 +4,5 @@ export class CreateUserDto {
   readonly birthday: string;
   readonly email: string;
   readonly phone: string;
-  readonly notes: string;
+  readonly notes: string[];
 }

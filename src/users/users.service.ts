@@ -2,6 +2,7 @@ import { Model } from 'mongoose';
 import { Inject, Injectable } from '@nestjs/common';
 
 import { User } from './interfaces/user.interface';
+import { Note } from './interfaces/note.interface';
 import { CreateUserDto } from './dto/create-user.dto';
 import { USER_MODEL_PROVIDER } from '../constants';
 import { debug } from 'console';
@@ -31,10 +32,17 @@ export class UsersService {
     return await this.userModel.findById(ID).exec();
   }
 
-  // async addNotes(updateUserDto: CreateUserDto): Promise<User> {
-  //   const updateUser = new this.userModel(updateUserDto);
-  //   return await updateUser.save();
-  // }
+  async addNote(ID, newNote: Note): Promise<User> {
+
+    const updateUser = await this.userModel.findById(ID).exec();
+
+    if (!updateUser._id) {
+      debug('user not find');
+    }
+    // await  updateUser.notes.push('textinADDNOTE');
+    await this.userModel.findByIdAndUpdate(ID, newNote);
+    return await this.userModel.findById(ID).exec();
+  }
 
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec();

@@ -1,4 +1,5 @@
 import * as mongoose from 'mongoose';
+// import { NoteSchema } from './notes.schema';
 
 export const UserSchema = new mongoose.Schema({
   name: {
@@ -19,6 +20,10 @@ export const UserSchema = new mongoose.Schema({
   },
   phone: {
     type: Number,
+    required: false,
+  },
+  notes: {
+    type: Array,
     required: false,
   },
 });
