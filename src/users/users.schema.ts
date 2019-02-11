@@ -1,5 +1,27 @@
 import * as mongoose from 'mongoose';
-// import { NoteSchema } from './notes.schema';
+
+const NoteSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  content: {
+    type: String,
+    required: false,
+  },
+  likeCount: {
+    type: String,
+    required: false,
+  },
+  tags: {
+    type: String, // mongoose.Schema.Types.Mixed
+    required: false,
+  },
+  dateCreate: {
+    type: String,
+    required: true,
+  },
+});
 
 export const UserSchema = new mongoose.Schema({
   name: {
@@ -22,8 +44,5 @@ export const UserSchema = new mongoose.Schema({
     type: Number,
     required: false,
   },
-  notes: {
-    type: Array,
-    required: false,
-  },
+  notes: [NoteSchema],
 });
