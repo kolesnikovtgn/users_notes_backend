@@ -1,9 +1,10 @@
 import * as mongoose from 'mongoose';
+import * as passportLocalMongoose from 'passport-local-mongoose';
 
 const NoteSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: false,
   },
   content: {
     type: String,
@@ -19,18 +20,18 @@ const NoteSchema = new mongoose.Schema({
   },
   dateCreate: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
 export const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   password: {
     type: String,
-    required: true,
+    required: false,
   },
   birthday: {
     type: String,
@@ -38,7 +39,7 @@ export const UserSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   phone: {
     type: Number,
@@ -46,3 +47,4 @@ export const UserSchema = new mongoose.Schema({
   },
   notes: [NoteSchema],
 });
+UserSchema.plugin(passportLocalMongoose);
