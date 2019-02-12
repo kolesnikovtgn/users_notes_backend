@@ -1,8 +1,6 @@
 import { Model } from 'mongoose';
 import { Inject, Injectable } from '@nestjs/common';
-
 import { User } from './interfaces/user.interface';
-import { Note } from './interfaces/note.interface';
 import { CreateUserDto } from './dto/create-user.dto';
 import { USER_MODEL_PROVIDER } from '../constants';
 import { debug } from 'console';
@@ -34,5 +32,13 @@ export class UsersService {
 
   async findAll(): Promise<User[]> {
     return await this.userModel.find().exec();
+  }
+
+  async findById(ID: number): Promise<User> {
+    return await this.userModel.findById(ID).exec();
+  }
+
+  async findOne(options: object): Promise<User> {
+    return await this.userModel.findOne(options).exec();
   }
 }
