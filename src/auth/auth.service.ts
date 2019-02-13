@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { PassportLocalModel } from 'mongoose';
@@ -37,14 +37,23 @@ export class AuthService {
     const expiresIn = 3600;
 
     const accessToken = jwt.sign({ id: user.id,
-      name: user.username }, 'ILovePokemon', { expiresIn });
+      name: user.username }, 'ILoveJS', { expiresIn });
     return {
       expiresIn,
       accessToken,
     };
   }
 
+  // If you login by id
+  // async validateUser(payload: JwtPayload): Promise<any> {
+  //   return await this.usersService.findById(payload.id);
+  // }
+  // If you want login by name
+  // async validateUser(payload: JwtPayload): Promise<any> {
+  //   return await this.usersService.findByName(payload.name);
+  // }
+
   async validateUser(payload: JwtPayload): Promise<any> {
-    return await this.usersService.findById(payload.id);
+    return await this.usersService.findByToken(payload.token);
   }
 }
