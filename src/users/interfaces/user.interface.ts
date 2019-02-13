@@ -1,4 +1,4 @@
-import { Document, PassportLocalDocument } from 'mongoose';
+import { PassportLocalDocument } from 'mongoose';
 import { Note } from './note.interface';
 
 export interface User extends PassportLocalDocument {

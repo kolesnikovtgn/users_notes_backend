@@ -5,7 +5,6 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { USER_MODEL_PROVIDER } from '../constants';
 import { debug } from 'console';
 
-// @Component()
 @Injectable()
 export class UsersService {
   constructor( @Inject(USER_MODEL_PROVIDER) private readonly userModel: Model<User> ) { }
