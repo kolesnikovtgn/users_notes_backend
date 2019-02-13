@@ -44,7 +44,13 @@ export class AuthService {
     };
   }
 
+  // async validateUser(payload: JwtPayload): Promise<any> {
+  //   return await this.usersService.findById(payload.id);
+  // }
+  // async validateUser(payload: JwtPayload): Promise<any> {
+  //   return await this.usersService.findByName(payload.name);
+  // }
   async validateUser(payload: JwtPayload): Promise<any> {
-    return await this.usersService.findById(payload.id);
+    return await this.usersService.findByToken(payload.token);
   }
 }
